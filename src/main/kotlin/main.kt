@@ -74,4 +74,42 @@ fun main(args: Array<String>) {
     println(isBlank)
 
     println(isBlank.xor(true))
+
+    var calories = 2500
+    if (calories > 2000){
+        println("you have consumed all the required calories")
+    }
+//    calories = 1900
+    calories = 2001
+    if (calories > 2000){
+        println("you have consumed all cals")
+    }
+    else if (calories > 1500){
+        println("you have left with few calories")
+    }
+    else{
+        println("you have still some calories left")
+    }
+    calories = 175
+    if (calories > 2000){
+        println("you have consumed all cals")
+    }
+    else if (calories > 1500){
+        println("you have left with few calories")
+    }
+    else{
+        println("you have still some calories left")
+    }
+
+    // if else in one line
+    val age = 9
+    if (age > 10) println("age > 10") else if (age > 8) println("age between 8 and 10") else println("age < 10")
+    println("hello")
+
+    // truth tables in kotlin using and , or
+    val myAge = 32
+    val yourAge = 32
+    val myName = "Ram"
+    val yourName = "Shyam"
+    if ((myAge == yourAge) && (myName != yourName) || (myAge == yourName.length)) println("Items true") else println("any other items")
 }
