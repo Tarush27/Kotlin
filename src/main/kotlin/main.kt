@@ -194,11 +194,14 @@ fun main(args: Array<String>) {
     fun doWork() = if (age123 < 21) println("not eligible") else println("eligible")
     doWork()
 
-    bye(5,"tarush",true)
-    bye(5,"tushar",false)
-    bye(5,"atul",true)
+    bye(5, "tarush", true)
+    bye(5, "tushar", false)
+    bye(5, "atul", true)
 
-    printUserInfo(likesMovies = true,Name = "Tarush", Age = 21) // named params -> not imp to maintain order
+    printUserInfo(likesMovies = false, Name = "Tarush") // named params -> not imp to maintain order
+    printUserInfo(Name = "Abhay", Age = 30) // named params -> not imp to maintain order
+    printUserInfo(Name = "Tushar", Age = 21) // named params -> not imp to maintain order
+    printUserInfo(Age = 36,Name = "Anu") // named params -> not imp to maintain order
 }
 
 class Person(var name: String)
@@ -246,12 +249,13 @@ fun hello() {
 fun there() = println("there")
 
 // created parametrized function
-fun bye(i: Int,i1: String,isHappy: Boolean) {
+fun bye(i: Int, i1: String, isHappy: Boolean) {
     println("you are $i and your name is $i1 and your family is not $isHappy")
 }
 
 // using named params in kotlin function's
 // creating user info function
-fun printUserInfo(Name: String, Age: Int, likesMovies: Boolean){
+// using default values of the args
+fun printUserInfo(Name: String = "Rikky", Age: Int = 85, likesMovies: Boolean = true) {
     println("$Name is of age $Age and does he likes movies $likesMovies")
 }
