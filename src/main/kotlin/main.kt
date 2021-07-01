@@ -202,6 +202,55 @@ fun main(args: Array<String>) {
     printUserInfo(Name = "Abhay", Age = 30) // named params -> not imp to maintain order
     printUserInfo(Name = "Tushar", Age = 21) // named params -> not imp to maintain order
     printUserInfo(Age = 36,Name = "Anu") // named params -> not imp to maintain order
+    disp("pens",25,33,258,450)
+
+    val dost = User("car","white",true)
+  /*  dost.printFullName()
+    dost.updateName("Tushar")
+    dost.printFullName()
+    dost.printFnLength()
+    dost.printPrefix("Mr")*/
+
+
+    val yar = User("tarush","kaistha")
+//    yar.printFullName()
+
+    val dosti = User("Soni")
+
+    var cousin = Contact("Sonia","Gandhi")
+
+    var bro = Contact("ajay")
+
+    var sis = Info("developer",64)
+    println(sis.goal)
+    sis.goal = 32.toString()
+    println(sis.goal)
+    println(sis.goalMotive)
+
+    var hosp = Hospital("Preeti","Honey")
+    println(hosp.roomName)
+    hosp.roomName = "Purvi"
+    println(hosp.roomName)
+    hosp.roomName = "Abhilasha"
+    println(hosp.roomName)
+    hosp.nurse = "Jaya"
+    println(hosp.nurse)
+    hosp.nurse = "Jacki"
+    println(hosp.nurse)
+    hosp.roomName = "Female CKT Team"
+    println(hosp.roomName)
+    hosp.patient = "Abdul"
+    println(hosp.patient)
+    hosp.floorNo = 2
+    println("Floor No :${hosp.floorNo}")
+    hosp.wardNo = 4
+    println("Ward No :${hosp.wardNo}")
+    println(hosp.showDetails())
+    var medicalInfo = Hospital("Pooja","Nihal")
+    println(medicalInfo.showDetails())
+    var history = Hospital("Ananya","Tarush")
+    println(history.updateDetailsWithSuffix("Thakur"))
+    println(history.nurseName)
 }
 
 class Person(var name: String)
@@ -258,4 +307,10 @@ fun bye(i: Int, i1: String, isHappy: Boolean) {
 // using default values of the args
 fun printUserInfo(Name: String = "Rikky", Age: Int = 85, likesMovies: Boolean = true) {
     println("$Name is of age $Age and does he likes movies $likesMovies")
+}
+//multi args of same type using vararg
+//created disp fun
+fun disp(title: String, vararg prices: Int){
+    println("$title and Prices : ")
+    prices.forEach {println(it)} // it-> object of iterator
 }
