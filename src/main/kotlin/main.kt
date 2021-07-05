@@ -1,3 +1,5 @@
+const val CHEAP_PRICE = 25000
+
 fun main(args: Array<String>) {
 //    println("Hello World!")
 
@@ -251,6 +253,48 @@ fun main(args: Array<String>) {
     var history = Hospital("Ananya","Tarush")
     println(history.updateDetailsWithSuffix("Thakur"))
     println(history.nurseName)
+
+//    val yaari = Contact("foo","bar")
+//    println(yaari.createContact)
+
+    val hyena = CompanionObjectDemo.display("Anshika")
+    println(hyena)
+
+    val silky = CompanionObjectDemo.createPilots(6)
+    val silk = CompanionObjectDemo.createPilots(0)
+//    println(silk)
+
+//    CompanionObjectDemo.createPilots(8)
+//    val kaistha = CompanionObjectDemo.pilots    // works as a singleton object
+//    println(kaistha)
+
+    // only single instance of the class FavFood
+    FavFood.name = "Tomatoe"
+    println(FavFood.name)
+    println(FavFood.length())
+    FavFood.ingredients.add("Salt")
+    println(FavFood.length())
+    println(FavFood.ingredients.first())
+    doStuff()
+    println(FavFood.name)
+//    println(FavFood.ingredients.first())
+    println(FavFood.ingredients.firstOrNull())
+
+    var iot = Mobile("Redmi","Note Five Pro")
+    println(iot.MAX_PRICE)
+    println(Mobile.max_price)
+
+    // created a class that contains various constants but that class acts as a singleton.
+    println(Constants.AVG_PRICE)
+
+    println(CHEAP_PRICE)
+
+
+}
+
+fun doStuff(){
+    FavFood.name = "Fish"
+    FavFood.ingredients.clear()
 }
 
 class Person(var name: String)

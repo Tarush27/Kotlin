@@ -1,4 +1,6 @@
 class Contact(var hey: String,var hi:String) {
+
+
     constructor(hey: String) : this(hey,"bobby"){
         println("have u studied this type of constructor?")
     }
@@ -10,5 +12,7 @@ class Contact(var hey: String,var hi:String) {
     init {
         println("hey yous")
     }
+
+
 
 }
