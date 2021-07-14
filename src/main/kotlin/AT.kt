@@ -15,4 +15,9 @@ enum class AT {
     };
 
     abstract fun findDiscount(): Int
+
+    // added static method or companion object.
+    companion object{
+        fun getAccount(name: String) = name
+    }
 }

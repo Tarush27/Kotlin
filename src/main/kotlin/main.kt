@@ -329,6 +329,15 @@ fun main(args: Array<String>) {
     val ac2 = AT.valueOf("silver")
     println(ac2.findDiscount())
 
+    for (accountType in AccType.values()){
+        println("${accountType.discountPercent}$accountType")
+    }
+     // how to iterate over values in kotlin enums using for & for each loop
+    // values method returns an array of values
+    // built in method in collections.
+    AccType.values().forEach { println(it) }
+
+    println(AT.getAccount("gold"))
 }
 
 fun doStuff(){
