@@ -280,15 +280,54 @@ fun main(args: Array<String>) {
 //    println(FavFood.ingredients.first())
     println(FavFood.ingredients.firstOrNull())
 
-    var iot = Mobile("Redmi","Note Five Pro")
+    var iot = Mobile("Redmi","Note Five Pro",AccType.SILVER) // value of enum passes
     println(iot.MAX_PRICE)
     println(Mobile.max_price)
-
+    println(iot.accType)  // enum printed
     // created a class that contains various constants but that class acts as a singleton.
     println(Constants.AVG_PRICE)
 
     println(CHEAP_PRICE)
 
+    iot.favCity = "New York"
+    iot.favCity = ":"
+    iot.favColor = "BLUE"
+    println(iot.toString())
+
+
+
+    val transmission = Vehicle.Transmission()
+    transmission.shift()
+    transmission.shift()
+    transmission.shift()
+
+    val vehicle = Vehicle()
+    vehicle.brand = "Alto K10"
+    vehicle.print()
+    vehicle.print()
+    vehicle.print()
+
+    val sw = vehicle.SteeringWheel()
+    sw.info()
+
+    val accTypeFromApi = "gold"
+    val accType = AccType.valueOf(accTypeFromApi.uppercase())
+    println(accType)
+    println(AccType.SILVER)
+    println(accType == AccType.SILVER)
+
+    println(AccType.SILVER.discountPercent)
+    println(AccType.SILVER.subscription)
+    println(AccType.SILVER.discountPercent)
+
+    val ac = AccType.valueOf("Bronze".uppercase())
+    println(ac.subscription)
+    println(ac.discountPercent)
+
+    println(AT.bronze.findDiscount())
+
+    val ac2 = AT.valueOf("silver")
+    println(ac2.findDiscount())
 
 }
 
@@ -344,6 +383,7 @@ fun there() = println("there")
 // created parametrized function
 fun bye(i: Int, i1: String, isHappy: Boolean) {
     println("you are $i and your name is $i1 and your family is not $isHappy")
+
 }
 
 // using named params in kotlin function's
