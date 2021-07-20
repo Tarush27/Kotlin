@@ -203,33 +203,33 @@ fun main(args: Array<String>) {
     printUserInfo(likesMovies = false, Name = "Tarush") // named params -> not imp to maintain order
     printUserInfo(Name = "Abhay", Age = 30) // named params -> not imp to maintain order
     printUserInfo(Name = "Tushar", Age = 21) // named params -> not imp to maintain order
-    printUserInfo(Age = 36,Name = "Anu") // named params -> not imp to maintain order
-    disp("pens",25,33,258,450)
+    printUserInfo(Age = 36, Name = "Anu") // named params -> not imp to maintain order
+    disp("pens", 25, 33, 258, 450)
 
-    val dost = User("car","white",true)
-  /*  dost.printFullName()
-    dost.updateName("Tushar")
-    dost.printFullName()
-    dost.printFnLength()
-    dost.printPrefix("Mr")*/
+    val dost = User("car", "white", true)
+    /*  dost.printFullName()
+      dost.updateName("Tushar")
+      dost.printFullName()
+      dost.printFnLength()
+      dost.printPrefix("Mr")*/
 
 
-    val yar = User("tarush","kaistha")
+    val yar = User("tarush", "kaistha")
 //    yar.printFullName()
 
     val dosti = User("Soni")
 
-    var cousin = Contact("Sonia","Gandhi")
+    var cousin = Contact("Sonia", "Gandhi")
 
     var bro = Contact("ajay")
 
-    var sis = Info("developer",64)
+    var sis = Info("developer", 64)
     println(sis.goal)
     sis.goal = 32.toString()
     println(sis.goal)
     println(sis.goalMotive)
 
-    var hosp = Hospital("Preeti","Honey")
+    var hosp = Hospital("Preeti", "Honey")
     println(hosp.roomName)
     hosp.roomName = "Purvi"
     println(hosp.roomName)
@@ -248,9 +248,9 @@ fun main(args: Array<String>) {
     hosp.wardNo = 4
     println("Ward No :${hosp.wardNo}")
     println(hosp.showDetails())
-    var medicalInfo = Hospital("Pooja","Nihal")
+    var medicalInfo = Hospital("Pooja", "Nihal")
     println(medicalInfo.showDetails())
-    var history = Hospital("Ananya","Tarush")
+    var history = Hospital("Ananya", "Tarush")
     println(history.updateDetailsWithSuffix("Thakur"))
     println(history.nurseName)
 
@@ -280,7 +280,7 @@ fun main(args: Array<String>) {
 //    println(FavFood.ingredients.first())
     println(FavFood.ingredients.firstOrNull())
 
-    var iot = Mobile("Redmi","Note Five Pro",AccType.SILVER) // value of enum passes
+    var iot = Mobile("Redmi", "Note Five Pro", AccType.SILVER) // value of enum passes
     println(iot.MAX_PRICE)
     println(Mobile.max_price)
     println(iot.accType)  // enum printed
@@ -293,7 +293,6 @@ fun main(args: Array<String>) {
     iot.favCity = ":"
     iot.favColor = "BLUE"
     println(iot.toString())
-
 
 
     val transmission = Vehicle.Transmission()
@@ -329,18 +328,94 @@ fun main(args: Array<String>) {
     val ac2 = AT.valueOf("silver")
     println(ac2.findDiscount())
 
-    for (accountType in AccType.values()){
+    for (accountType in AccType.values()) {
         println("${accountType.discountPercent}$accountType")
     }
-     // how to iterate over values in kotlin enums using for & for each loop
+    // how to iterate over values in kotlin enums using for & for each loop
     // values method returns an array of values
     // built in method in collections.
     AccType.values().forEach { println(it) }
 
     println(AT.getAccount("gold"))
+
+    var users = User("tarush", "kaisth")
+
+    // use of when expression
+    when {
+        users.fn == "tarush" || users.ln == "kaistha" -> println("Hi this is tarush")
+//        "tarus" -> { println("Hi this is tarush")}
+        else -> println("this is not tarush")
+    }
+
+
+    // non exhaustive when statement
+    // when as a statement with or w/o else
+    when (AT.gold) {
+        AT.gold -> println("gold member")
+    }
+
+    // exhaustive when statement
+    // when as an expression
+    var ati = AT.bronze
+
+    val acp = when (ati) {
+        AT.bronze -> "bronze"
+        AT.platinum -> "platinum"
+        AT.gold -> "gold member"
+        else -> "regular"
+    }
+    println(acp)
+
+    // initialize data class
+    val en = Enemy(age = 10,firstName = "tarush",calories = 80)
+    val en1 = Enemy("abc", 10, 14)
+    // params passed in the constructor
+    // are being considered as components
+    // to the kotlin compiler
+    println(en.component1())
+    println(en.component2())
+    println(en.component3())
+    println(en.equals(en1)) // prints true
+    println(en)
+    println(en1)
+    println(en.printName())
+    val en_2 = Enemy(calories = 10)
+    println(en_2)
+
+    // destructuring in kotlin
+    val animal = Animal("german shepherd","jimmy")
+    val (theAnimalName,animalBreed) = animal
+    println(animalBreed)
+    println(theAnimalName)
+
+    // copy method of data class
+    val animals = animal.copy("husky")
+    println(animals)
+    val animals1 = animals.copy()
+    println(animals1)
+
+    val order = Order(amt = 100,customer = animals1)
+    println(order)
+
+    val newOrder = order.copy(200,animals)
+    println(newOrder)
+
+    /*
+     inbuilt data classes in kotlin
+    */
+    // pair data class
+    val pair = 10 to 20
+    println(pair.first)
+    println(pair.second)
+    // triple data class
+    val three = Triple(1,2,3)
+    println(three.first)
+    println(three.second)
+    println(three.third)
+
 }
 
-fun doStuff(){
+fun doStuff() {
     FavFood.name = "Fish"
     FavFood.ingredients.clear()
 }
@@ -401,9 +476,12 @@ fun bye(i: Int, i1: String, isHappy: Boolean) {
 fun printUserInfo(Name: String = "Rikky", Age: Int = 85, likesMovies: Boolean = true) {
     println("$Name is of age $Age and does he likes movies $likesMovies")
 }
+
 //multi args of same type using vararg
 //created disp fun
-fun disp(title: String, vararg prices: Int){
+fun disp(title: String, vararg prices: Int) {
     println("$title and Prices : ")
-    prices.forEach {println(it)} // it-> object of iterator
+    prices.forEach { println(it) } // it-> object of iterator
 }
+
+data class Order(val amt: Int, val customer: Animal)

@@ -1,0 +1,1 @@
+data class Animal(var breed: String,var naam: String)
