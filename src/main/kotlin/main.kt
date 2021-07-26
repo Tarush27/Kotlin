@@ -1,3 +1,6 @@
+import protected_modifier.Chef
+import protected_modifier.Persons
+
 const val CHEAP_PRICE = 25000
 
 fun main(args: Array<String>) {
@@ -413,6 +416,14 @@ fun main(args: Array<String>) {
     println(three.second)
     println(three.third)
 
+    var person1 = Persons("Tarush",26)
+    person1.printMyFavoFood()
+    val chef = Chef("Tushar",25,"chicken")
+    chef.printMyFavoFood()
+    chef.setMyFavoFood("Lobster")
+    chef.printMyFavoFood()
+    chef.getValue()
+    person1.printValue()
 }
 
 fun doStuff() {
