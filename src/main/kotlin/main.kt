@@ -417,13 +417,19 @@ fun main(args: Array<String>) {
     println(three.third)
 
     var person1 = Persons("Tarush",26)
-    person1.printMyFavoFood()
+//    person1.printMyFavoFood()
     val chef = Chef("Tushar",25,"chicken")
-    chef.printMyFavoFood()
+//    chef.printMyFavoFood()
     chef.setMyFavoFood("Lobster")
-    chef.printMyFavoFood()
+//    chef.printMyFavoFood()
     chef.getValue()
     person1.printValue()
+    chef.setMyFavoFood("aloo")
+
+    var trucks = Truck("Blue")
+    trucks.addAxel(5)
+    var ashok = AshokLeyLand("Red")
+    ashok.addAxel(2)
 }
 
 fun doStuff() {
