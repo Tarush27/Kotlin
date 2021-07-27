@@ -19,6 +19,10 @@ class Chef(name: String,age: Int,var favoFood:String) : Persons(name,age){
     protected fun printMyFavoFood(){
         println(favoFood)
     }
+
+    init{
+        println(favoFood)
+    }
     fun setMyFavoFood(food: String){
         favoFood = food
         printMyFavoFood()

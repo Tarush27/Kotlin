@@ -15,7 +15,4 @@ open class Truck(var color: String) {
     }
 }
 class AshokLeyLand(color: String) : Truck(color){
-    init{
-
-    }
 }

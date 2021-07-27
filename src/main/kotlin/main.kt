@@ -1,3 +1,4 @@
+import abstraction.Hen
 import protected_modifier.Chef
 import protected_modifier.Persons
 
@@ -426,10 +427,23 @@ fun main(args: Array<String>) {
     person1.printValue()
     chef.setMyFavoFood("aloo")
 
+    /*
     var trucks = Truck("Blue")
     trucks.addAxel(5)
     var ashok = AshokLeyLand("Red")
     ashok.addAxel(2)
+    */
+
+    CEO(name="tarush",salary=250.00,age=25)
+    val tiger = Tiger()
+    tiger.run()
+    println(tiger.name)
+    val iphone = iPhone()
+    iphone.dispColor()
+
+    val hen = Hen()
+    hen.eat()
+    hen.fly()
 }
 
 fun doStuff() {
