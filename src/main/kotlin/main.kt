@@ -1,4 +1,6 @@
+import abstraction.Crow
 import abstraction.Hen
+import abstraction.Peacock
 import protected_modifier.Chef
 import protected_modifier.Persons
 
@@ -444,6 +446,13 @@ fun main(args: Array<String>) {
     val hen = Hen()
     hen.eat()
     hen.fly()
+
+    val crow = Crow()
+    crow.sing()
+    val pcock = Peacock()
+    pcock.sing()
+
+
 }
 
 fun doStuff() {
