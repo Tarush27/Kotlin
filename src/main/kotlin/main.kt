@@ -1,6 +1,4 @@
-import abstraction.Crow
-import abstraction.Hen
-import abstraction.Peacock
+import abstraction.*
 import protected_modifier.Chef
 import protected_modifier.Persons
 
@@ -373,7 +371,7 @@ fun main(args: Array<String>) {
     println(acp)
 
     // initialize data class
-    val en = Enemy(age = 10,firstName = "tarush",calories = 80)
+    val en = Enemy(age = 10, firstName = "tarush", calories = 80)
     val en1 = Enemy("abc", 10, 14)
     // params passed in the constructor
     // are being considered as components
@@ -389,8 +387,8 @@ fun main(args: Array<String>) {
     println(en_2)
 
     // destructuring in kotlin
-    val animal = Animal("german shepherd","jimmy")
-    val (theAnimalName,animalBreed) = animal
+    val animal = Animal("german shepherd", "jimmy")
+    val (theAnimalName, animalBreed) = animal
     println(animalBreed)
     println(theAnimalName)
 
@@ -400,10 +398,10 @@ fun main(args: Array<String>) {
     val animals1 = animals.copy()
     println(animals1)
 
-    val order = Order(amt = 100,customer = animals1)
+    val order = Order(amt = 100, customer = animals1)
     println(order)
 
-    val newOrder = order.copy(200,animals)
+    val newOrder = order.copy(200, animals)
     println(newOrder)
 
     /*
@@ -414,14 +412,14 @@ fun main(args: Array<String>) {
     println(pair.first)
     println(pair.second)
     // triple data class
-    val three = Triple(1,2,3)
+    val three = Triple(1, 2, 3)
     println(three.first)
     println(three.second)
     println(three.third)
 
-    var person1 = Persons("Tarush",26)
+    var person1 = Persons("Tarush", 26)
 //    person1.printMyFavoFood()
-    val chef = Chef("Tushar",25,"chicken")
+    val chef = Chef("Tushar", 25, "chicken")
 //    chef.printMyFavoFood()
     chef.setMyFavoFood("Lobster")
 //    chef.printMyFavoFood()
@@ -436,7 +434,7 @@ fun main(args: Array<String>) {
     ashok.addAxel(2)
     */
 
-    CEO(name="tarush",salary=250.00,age=25)
+    CEO(name = "tarush", salary = 250.00, age = 25)
     val tiger = Tiger()
     tiger.run()
     println(tiger.name)
@@ -452,9 +450,16 @@ fun main(args: Array<String>) {
     val pcock = Peacock()
     pcock.sing()
 
+    // made object of pigeon class
+    // in which eat() is called.
+    val pigeon = Pigeon(color="green")
+    taru(pigeon)
+
 
 }
-
+fun taru(birds:Birds){
+    birds.eat()
+}
 fun doStuff() {
     FavFood.name = "Fish"
     FavFood.ingredients.clear()
