@@ -1,4 +1,6 @@
 import abstraction.*
+import interfaces.Fat32FileSystem
+import interfaces.MemoryFileSystem
 import protected_modifier.Chef
 import protected_modifier.Persons
 
@@ -452,14 +454,34 @@ fun main(args: Array<String>) {
 
     // made object of pigeon class
     // in which eat() is called.
-    val pigeon = Pigeon(color="green")
+    val pigeon = Pigeon(color = "green")
     taru(pigeon)
 
+    val fs = getFileSystem()
+    println(fs.readDir())
+    println(fs.readFile())
 
 }
-fun taru(birds:Birds){
+
+fun getFileSystem(): FileSystem {
+    return MemoryFileSystem(
+        listOf("/path/to/file", "/another/path/to/file"), "file-contents")
+}
+
+interface Discountable {
+    fun discountPercent(): Double
+    fun noDiscount()
+}
+
+interface FileSystem {
+    fun readDir(): List<String>
+    fun readFile(): String
+}
+
+fun taru(birds: Birds) {
     birds.eat()
 }
+
 fun doStuff() {
     FavFood.name = "Fish"
     FavFood.ingredients.clear()
