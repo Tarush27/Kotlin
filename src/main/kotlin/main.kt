@@ -1,6 +1,5 @@
 import abstraction.*
-import interfaces.Fat32FileSystem
-import interfaces.MemoryFileSystem
+import interfaces.*
 import protected_modifier.Chef
 import protected_modifier.Persons
 
@@ -461,11 +460,43 @@ fun main(args: Array<String>) {
     println(fs.readDir())
     println(fs.readFile())
 
+    var btn = Button()
+    btn.clickListener = MyListener()   // concrete implementation
+    btn.click()
+
+    /*
+    anonymous Interface.
+    */
+    val bt = Button()
+    bt.setListener(object : OnClickListener {
+        override fun onClick() {
+            println("again clicked!!!")
+        }
+    })
+    bt.clickListener = object : OnClickListener {
+        override fun onClick() {
+            println("already clicked")
+        }
+
+    }
+    bt.click()
+     val interfaceDemo = InterfaceDemo()
+    interfaceDemo.add(5)
+    interfaceDemo.show()
+
+    val propDemo = PropDemo()
+    println(propDemo.a)
+    println(propDemo.b)
+
+    val result = Result()
+    result.area()
+    result.perimeter()
 }
 
 fun getFileSystem(): FileSystem {
     return MemoryFileSystem(
-        listOf("/path/to/file", "/another/path/to/file"), "file-contents")
+        listOf("/path/to/file", "/another/path/to/file"), "file-contents"
+    )
 }
 
 interface Discountable {
@@ -476,6 +507,10 @@ interface Discountable {
 interface FileSystem {
     fun readDir(): List<String>
     fun readFile(): String
+}
+
+interface OnClickListener {
+    fun onClick()
 }
 
 fun taru(birds: Birds) {
