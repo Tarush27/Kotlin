@@ -480,7 +480,7 @@ fun main(args: Array<String>) {
 
     }
     bt.click()
-     val interfaceDemo = InterfaceDemo()
+    val interfaceDemo = InterfaceDemo()
     interfaceDemo.add(5)
     interfaceDemo.show()
 
@@ -491,6 +491,49 @@ fun main(args: Array<String>) {
     val result = Result()
     result.area()
     result.perimeter()
+
+    // array in kotlin.
+    val items = charArrayOf('a', 'b', 'c')
+    items.forEach { println(it) }
+    for (i in 0..items.size-1){
+        println(items[i])
+    }
+    // array of objects.
+    val cse = arrayOf(User("Tarush", "Kumar"), User("Tushar", "Kaistha"))
+    cse.forEach { println(it) }
+    // add new user using
+    // array of objects.
+    val ooty = cse.plus(User("Abhay", "Sood"))
+    ooty.forEach { println(it) }
+    val ertiga = cse[0]
+    println(ertiga)
+    cse[0] = User("Anchal", "Sood")
+    val alto = cse[0]
+    println(alto)
+    // using array constructor.
+    val arrayName = Array(5) { i -> i * 1 }
+    // traversing in arrays in kotlin.
+    for(i in 0..arrayName.size-1){
+        println(arrayName[i])
+    }
+    for (i in arrayName.indices){
+        println(arrayName[i])
+    }
+//    for (i in arrayName.withIndex()){
+//        println(arrayName[i])
+//    }
+    for(i in 1..5 step 2){
+        println(i)
+    }
+
+    for(i in 5 downTo 1){
+        println(i)
+    }
+
+    for(i in 10 downTo 1 step 4){
+        println(i)
+    }
+
 }
 
 fun getFileSystem(): FileSystem {

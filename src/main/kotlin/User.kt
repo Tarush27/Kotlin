@@ -13,9 +13,8 @@ class User(var fn: String,var ln: String,isPlayer: Boolean)   // primary constru
        println(fn.length)
     }
 
-    fun printFullName(){
-        println("$fn $ln")
-    }
+    fun printFullName(): String = "$fn $ln"
+
     fun printPrefix(prefix: String){
         println("$prefix $ln")
     }
@@ -25,6 +24,9 @@ class User(var fn: String,var ln: String,isPlayer: Boolean)   // primary constru
 
     fun printFnLength(){
         println(fn.length)
+    }
+    override fun toString():String{
+        return printFullName()
     }
 
 }
