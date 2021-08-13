@@ -570,8 +570,75 @@ fun main(args: Array<String>) {
 
     // returns index of element in list.
     println(jaguar.indexOf(1.0))
-}
 
+    //returns the index of the last element in list.
+    println(jaguar.lastIndexOf(-1.0))
+
+    // also returns the index of the last element in list.
+    println(jaguar.lastIndex)
+
+    // sorting of the immutable list
+    // ascending order and descending order.
+    val list = listOf(5, 6, 8, 2, 4, 3, 7, 1)
+    println(list.sorted())
+    println(list.sortedDescending())
+
+    // mutable lists.
+    val chd = mutableListOf(1, 2, 3, 4, 5)
+    chd.forEach { println(it) }
+
+    println("----")
+
+    chd.add(6) // new element added.
+
+    chd.forEach { println(it) }
+
+    chd.remove(2)  // element removed.
+
+    println("----")
+
+    chd.forEach { println(it) }
+
+    chd.removeAt(3)  // element removed at index.
+    println("----")
+
+    chd.forEach { println(it) }
+
+    println("----")
+
+    // mutable list of objects.
+    val user2068 = User("Tarush", "Kaistha")
+    val mercury = mutableListOf(
+        user2068,
+        User("Tushar", "Kaistha"),
+        User("Anchal", "Kaistha")
+    )
+    mercury.forEach { println(it) }
+//    mercury.removeAt(1)
+//    mercury.removeAt(1)
+
+    println("----")
+    mercury.forEach { println(it) }
+    mercury[1] = User("Abhay", "Sood")  // setting the new value in the list.
+    println("----")
+    mercury.forEach { println(it) }
+    println("----")
+    println(mercury[0]) // getting value in the list.
+
+    //filter list in kotlin.
+    val filterList: List<String> = listOf("hi", "hello", "bye", "hiya", "heena", "hyna")
+    val filteredList = filterList.filter { it != "hello" }
+    val listFiltered = filterList.filter { it.contains("h") }
+    println(filteredList)
+    println(listFiltered)
+    val filterAges = listOf(23,33,12,9,17,19,99)
+    val adults = filterAges.filter(::isAdult)  // passing method reference.
+    println(adults)
+
+}
+fun isAdult(value:Int): Boolean{
+    return value >= 18
+}
 fun getFileSystem(): FileSystem {
     return MemoryFileSystem(
         listOf("/path/to/file", "/another/path/to/file"), "file-contents"
