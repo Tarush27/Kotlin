@@ -3,6 +3,7 @@ import interfaces.*
 import protected_modifier.Chef
 import protected_modifier.Persons
 
+
 const val CHEAP_PRICE = 25000
 
 fun main(args: Array<String>) {
@@ -495,7 +496,7 @@ fun main(args: Array<String>) {
     // array in kotlin.
     val items = charArrayOf('a', 'b', 'c')
     items.forEach { println(it) }
-    for (i in 0..items.size-1){
+    for (i in 0..items.size - 1) {
         println(items[i])
     }
     // array of objects.
@@ -513,27 +514,62 @@ fun main(args: Array<String>) {
     // using array constructor.
     val arrayName = Array(5) { i -> i * 1 }
     // traversing in arrays in kotlin.
-    for(i in 0..arrayName.size-1){
+    for (i in 0..arrayName.size - 1) {
         println(arrayName[i])
     }
-    for (i in arrayName.indices){
+    for (i in arrayName.indices) {
         println(arrayName[i])
     }
 //    for (i in arrayName.withIndex()){
 //        println(arrayName[i])
 //    }
-    for(i in 1..5 step 2){
+    for (i in 1..5 step 2) {
         println(i)
     }
 
-    for(i in 5 downTo 1){
+    for (i in 5 downTo 1) {
         println(i)
     }
 
-    for(i in 10 downTo 1 step 4){
+    for (i in 10 downTo 1 step 4) {
         println(i)
     }
 
+    // list in kotlin.
+    // immutable list.
+    // through list-of,
+    // can't add elements in list.
+    val jaguar = listOf(1.0, 2.0, 3.0, 4.0)
+    jaguar.forEach { println(it) }
+
+    val i10 = listOf(User("Tarush", "Kaistha"), User("Tushar", "Kaistha"))
+    i10.forEach { println(it) }
+    println(i10.size)
+    for (i in i10.indices) {
+        println(i10[i])
+    }
+
+    // returns first element in the list.
+    val first = i10.first()
+    println(first.fn)
+
+    // returns last element in the list.
+    val last = i10.last()
+    println(last)
+
+    // returns first element or null
+    // if list is empty.
+    val firstOrNull = i10.firstOrNull()
+    println(firstOrNull)
+
+    // empty list returns read only list.
+    // size = 0
+    val odi: String? = null
+    val bugati = if (odi == null) emptyList() else listOf(odi)
+    println(bugati.isEmpty())
+
+    // returns index of element in list.
+    println(jaguar.indexOf(1.0))
 }
 
 fun getFileSystem(): FileSystem {
