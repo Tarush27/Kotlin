@@ -635,6 +635,36 @@ fun main(args: Array<String>) {
     val adults = filterAges.filter(::isAdult)  // passing method reference.
     println(adults)
 
+    // find items in list.
+    val newList:List<String> = listOf("Donn","Tushar","Tarush","Pooja","Meyanka","Taru")
+    val newResult:String? = newList.find { it == "Pooja" }
+    println(newResult?.length)
+    println("----")
+    val newResult1:String = newList.first { it == "Pooja" }
+    println(newResult1.length)
+    println("----")
+//    val nR2:String = newList.first { it == "foobar"}
+//    println(nR2)
+    val hiResult: String? = newList.firstOrNull { it == "donn" }
+    println(hiResult?.length)
+    println("----")
+    val newResult3:String = newList.first{it.contains("Taru")}
+    println(newResult3)
+    println("----")
+    val newResult4:String = newList.last{it.contains("Taru")}
+    println(newResult4)
+    println("----")
+    val newResult5:Int = newList.indexOfLast{it.contains("nsakfh")}
+    println(newResult5)
+    println("----")
+    val hiResults: String? = newList.lastOrNull { it == "Taru" }
+    println(hiResults?.length)
+    println(hiResults)
+
+    // use filter not in list.
+    println("----")
+    val notFilter = newList.filterNot { it == "Tushar" }
+    println(notFilter)
 }
 fun isAdult(value:Int): Boolean{
     return value >= 18
