@@ -631,16 +631,16 @@ fun main(args: Array<String>) {
     val listFiltered = filterList.filter { it.contains("h") }
     println(filteredList)
     println(listFiltered)
-    val filterAges = listOf(23,33,12,9,17,19,99)
+    val filterAges = listOf(23, 33, 12, 9, 17, 19, 99)
     val adults = filterAges.filter(::isAdult)  // passing method reference.
     println(adults)
 
     // find items in list.
-    val newList:List<String> = listOf("Donn","Tushar","Tarush","Pooja","Meyanka","Taru")
-    val newResult:String? = newList.find { it == "Pooja" }
+    val newList: List<String> = listOf("Donn", "Tushar", "Tarush", "Pooja", "Meyanka", "Taru")
+    val newResult: String? = newList.find { it == "Pooja" }
     println(newResult?.length)
     println("----")
-    val newResult1:String = newList.first { it == "Pooja" }
+    val newResult1: String = newList.first { it == "Pooja" }
     println(newResult1.length)
     println("----")
 //    val nR2:String = newList.first { it == "foobar"}
@@ -648,13 +648,13 @@ fun main(args: Array<String>) {
     val hiResult: String? = newList.firstOrNull { it == "donn" }
     println(hiResult?.length)
     println("----")
-    val newResult3:String = newList.first{it.contains("Taru")}
+    val newResult3: String = newList.first { it.contains("Taru") }
     println(newResult3)
     println("----")
-    val newResult4:String = newList.last{it.contains("Taru")}
+    val newResult4: String = newList.last { it.contains("Taru") }
     println(newResult4)
     println("----")
-    val newResult5:Int = newList.indexOfLast{it.contains("nsakfh")}
+    val newResult5: Int = newList.indexOfLast { it.contains("nsakfh") }
     println(newResult5)
     println("----")
     val hiResults: String? = newList.lastOrNull { it == "Taru" }
@@ -665,10 +665,45 @@ fun main(args: Array<String>) {
     println("----")
     val notFilter = newList.filterNot { it == "Tushar" }
     println(notFilter)
+
+    // creating new list from existing list.
+    val newMutableList: MutableList<String> = mutableListOf("Pushpinder", "Parul")
+    // appends the new elements at the end of the list.
+    newList.filterTo(newMutableList) { it.contains("a") }
+    // doesnt include any new element.
+    newList.filterNotTo(newMutableList) { it == "Tarush" }
+    println(newMutableList)
+    println("----")
+    //flatten a list in an array in kotlin.
+    val mine: List<String> = listOf("Apples", "Grapes")
+    val theirs: List<String> = listOf("Ape", "Guava")
+    val others: List<String> = listOf("Pineapple", "Kiwi")
+    val allOfUs: List<List<String>> = listOf(mine, theirs, others)
+    println(allOfUs)
+    println("----")
+    println(allOfUs.flatten())
+    println("----")
+    val mineArray: Array<String> = arrayOf("Apples", "Grapes")
+    val theirsArray: Array<String> = arrayOf("Ape", "Guava")
+    val othersArray: Array<String> = arrayOf("Pineapple", "Kiwi")
+    val allArrays: Array<Array<String>> = arrayOf(mineArray, theirsArray, othersArray)
+    println(allArrays)
+    println("----")
+    println(allArrays.flatten())
+    println("----")
+
+    // combine multiple immutable list in kotlin.
+    val finalList: List<String> = mine.plus(theirs).plus(others)
+    println(finalList)
+    println("----")
+    println(finalList.minus(others))
+    println(finalList.minus("Ape"))
 }
-fun isAdult(value:Int): Boolean{
+
+fun isAdult(value: Int): Boolean {
     return value >= 18
 }
+
 fun getFileSystem(): FileSystem {
     return MemoryFileSystem(
         listOf("/path/to/file", "/another/path/to/file"), "file-contents"

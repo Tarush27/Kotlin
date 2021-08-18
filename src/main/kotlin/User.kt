@@ -26,7 +26,8 @@ class User(var fn: String,var ln: String,isPlayer: Boolean)   // primary constru
         println(fn.length)
     }
     override fun toString():String{
-        return printFullName()
+        val fullName = printFullName()
+        return fullName
     }
 
 }
