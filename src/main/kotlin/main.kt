@@ -698,7 +698,80 @@ fun main(args: Array<String>) {
     println("----")
     println(finalList.minus(others))
     println(finalList.minus("Ape"))
+
+    // use of map operator in kotlin list.
+    val abbreviations = newList.map { it.substring(0,3).uppercase() }.reversed()
+    println("----")
+    println(abbreviations)
+    println("----")
+    val abbreviation = newList.map { "BAR" }
+    println(abbreviation)
+    val newAbr = newList.map {
+        val words = it.split(' ')
+        words[0].substring(0,1)
+    }
+    println("----")
+    println(newAbr)
+
+    // created list of objects.
+    val people = listOf(
+        People("Tushar"),
+        People("Honey"),
+        People("Ajay"),
+    )
+    println("----")
+    // map function in list of objects.
+    val newPeople = people.map { it.name_2068.lowercase() }
+    println(newPeople)
+
+    // map vs flat map
+    val groceryBag = listOf(
+        ShoppingBag(listOf("Grapes","Apples","Oranges")),
+        ShoppingBag(listOf("Milk","Eggs","Paste")),
+        ShoppingBag(listOf("Bread","Naan","Cake"))
+    )
+
+    val retailBag = listOf(
+        ShoppingBag(listOf("Shirts","Pants","Trousers")),
+        ShoppingBag(listOf("Sox","Shoes")),
+        ShoppingBag(listOf("Jacket","Sweater","Scarf"))
+    )
+    println("---")
+    println(retailBag.map { it.itemsBag })
+    println("----")
+    // flatMap returns a brand-new single list
+    println(groceryBag.flatMap { it.itemsBag})
+
+    // kotlin set data structure.
+    println("----")
+    // creating immutable set.
+    val initialSet = setOf("Donn","Tushar","Tarush","Tarush")
+    println(initialSet)
+    println("----")
+    // creating mutable set.
+    val marazoSet = mutableSetOf("Tushar","Tarush","Abhay","Anchal")
+    println(marazoSet)
+    println("----")
+    marazoSet.add("Jane")  // added new element in the set.
+    println(marazoSet.size)
+    println(marazoSet.isEmpty())  // check if the set is empty or not.
+
+    println("----")
+    // set of objects.
+    val setOfPeople = setOf(
+        People("Param"),
+        People("Param"),
+        People("Palak")
+    )
+    println(setOfPeople)
+
+    val newCollections = initialSet.containsAll(setOf("Donn"))
+    println("----")
+    println(newCollections)
 }
+
+data class People(val name_2068:String)
+class ShoppingBag(val itemsBag: List<String>)
 
 fun isAdult(value: Int): Boolean {
     return value >= 18
