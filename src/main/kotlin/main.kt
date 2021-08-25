@@ -700,7 +700,7 @@ fun main(args: Array<String>) {
     println(finalList.minus("Ape"))
 
     // use of map operator in kotlin list.
-    val abbreviations = newList.map { it.substring(0,3).uppercase() }.reversed()
+    val abbreviations = newList.map { it.substring(0, 3).uppercase() }.reversed()
     println("----")
     println(abbreviations)
     println("----")
@@ -708,7 +708,7 @@ fun main(args: Array<String>) {
     println(abbreviation)
     val newAbr = newList.map {
         val words = it.split(' ')
-        words[0].substring(0,1)
+        words[0].substring(0, 1)
     }
     println("----")
     println(newAbr)
@@ -726,36 +726,38 @@ fun main(args: Array<String>) {
 
     // map vs flat map
     val groceryBag = listOf(
-        ShoppingBag(listOf("Grapes","Apples","Oranges")),
-        ShoppingBag(listOf("Milk","Eggs","Paste")),
-        ShoppingBag(listOf("Bread","Naan","Cake"))
+        ShoppingBag(listOf("Grapes", "Apples", "Oranges")),
+        ShoppingBag(listOf("Milk", "Eggs", "Paste")),
+        ShoppingBag(listOf("Bread", "Naan", "Cake"))
     )
 
     val retailBag = listOf(
-        ShoppingBag(listOf("Shirts","Pants","Trousers")),
-        ShoppingBag(listOf("Sox","Shoes")),
-        ShoppingBag(listOf("Jacket","Sweater","Scarf"))
+        ShoppingBag(listOf("Shirts", "Pants", "Trousers")),
+        ShoppingBag(listOf("Sox", "Shoes")),
+        ShoppingBag(listOf("Jacket", "Sweater", "Scarf"))
     )
     println("---")
     println(retailBag.map { it.itemsBag })
     println("----")
     // flatMap returns a brand-new single list
-    println(groceryBag.flatMap { it.itemsBag})
+    println(groceryBag.flatMap { it.itemsBag })
 
     // kotlin set data structure.
     println("----")
     // creating immutable set.
-    val initialSet = setOf("Donn","Tushar","Tarush","Tarush")
+    val initialSet = setOf("Donn", "Tushar", "Tarush", "Tarush")
     println(initialSet)
     println("----")
     // creating mutable set.
-    val marazoSet = mutableSetOf("Tushar","Tarush","Abhay","Anchal")
+    val marazoSet = mutableSetOf("Tushar", "Tarush", "Abhay", "Anchal")
     println(marazoSet)
     println("----")
     marazoSet.add("Jane")  // added new element in the set.
     println(marazoSet.size)
     println(marazoSet.isEmpty())  // check if the set is empty or not.
 
+    marazoSet += mutableListOf("Anu")
+    println(marazoSet)
     println("----")
     // set of objects.
     val setOfPeople = setOf(
@@ -768,9 +770,72 @@ fun main(args: Array<String>) {
     val newCollections = initialSet.containsAll(setOf("Donn"))
     println("----")
     println(newCollections)
+
+    /*
+    loops in kotlin
+    */
+
+    // for loop
+    val values = listOf(1, 2, 3, 4, 5, 6, 7)
+    for (i in values) {
+        println(i)
+    }
+    println("----")
+    for (j in 0 until 10 step 2) {
+        println(j)
+    }
+    println("----")
+    val gentle = listOf(
+        People("gausf"),
+        People("djyt"),
+        People("uwehcehu")
+    )
+
+    for (b in gentle) {
+        println(b)
+    }
+
+    println("----")
+    // while loop in kotlin
+    var g = 0
+    while(g < 10){
+        println(g)
+        g++
+    }
+
+    val xuv = listOf("tarush","tushar","karthik")
+    var e = 0
+    while(e < xuv.size){
+        println(xuv[e])
+        e++
+    }
+
+    // kotlin union operator.
+    val people_2 = listOf(
+        People("Honey"),
+        People("Dolphy"),
+        People("Varun"),
+        People("Nidhi")
+    )
+
+    val people_3 = listOf(
+        People("Honey"),
+        People("Purvi"),
+        People("Vikas"),
+        People("Akshay")
+    )
+
+    val distinctValues = people_2.union(people_3).union(listOf(People("Money")))
+    println(distinctValues)
+
+    // forEachIndex in kotlin.
+    // returns the index of the element simultaneously.
+    people_3.forEachIndexed { index, people ->
+        println("Index : $index , People : $people")
+    }
 }
 
-data class People(val name_2068:String)
+data class People(val name_2068: String)
 class ShoppingBag(val itemsBag: List<String>)
 
 fun isAdult(value: Int): Boolean {
