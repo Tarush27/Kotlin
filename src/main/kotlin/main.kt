@@ -833,6 +833,86 @@ fun main(args: Array<String>) {
     people_3.forEachIndexed { index, people ->
         println("Index : $index , People : $people")
     }
+
+    // range in kotlin.
+    val q = 5
+    if(q in 1..20){
+        println("yes")
+    }
+    else{
+        println("no")
+    }
+
+    // map in kotlin.
+    val states = mapOf(         // -> immutable map
+        "NY" to "New York",
+        "CA" to "California",
+        "IND" to "India"
+    )
+    // prints the default value if the key is not present.
+    val resultState: String = states.getOrDefault("NEYY","welcome to new york")
+    println(resultState)
+
+    println("----")
+    // prints the value of default value function.
+    val resultStates = states.getOrElse("CAI") { "BAR" }
+    println(resultStates)
+    // returns boolean value.
+    val noState = states.containsKey("IND")
+    println(noState)
+    val noValue = states.containsValue("India")
+    println(noValue)
+    // returns a read only set containing key-value pairs.
+    val newEntries = states.values
+    println(newEntries)
+    // returns the length of immutable map.
+    val numberOfEntries = states.count()
+    println(numberOfEntries)
+    // empty map.
+    val emptyMap = mapOf<String , Int>()
+    println(emptyMap)
+    println(emptyMap.entries)
+    println(emptyMap.keys)
+    println(emptyMap.values)
+
+    // mutable maps in kotlin.
+    var mutableMap = mutableMapOf(
+        "BT" to "Bluetooth",
+        "WA" to "Whatsapp",
+        "FB" to "Facebook"
+    )
+
+    // printing the map.
+    println(mutableMap)
+
+    // inserting the element in the map.
+    mutableMap.put("AS","Adobe Scanner")
+    println("----")
+    println(mutableMap)
+    println("----")
+    // removing the element in the map.
+    mutableMap.remove("WA")
+    println(mutableMap)
+    println("----")
+    mutableMap.put("BT","Boston")
+    println(mutableMap)
+    println("----")
+    mutableMap.putIfAbsent("JK","Jammu Kashmir")
+    println(mutableMap)
+    mutableMap.put("JK","J&K")
+    println(mutableMap)
+    // only removes the value
+    // if the key is not present.
+    // otherwise not.
+    mutableMap.remove("FB","FooBar")
+    println(mutableMap)
+
+    // inserts the value.
+    // if it's not present.
+    mutableMap.getOrPut("AUS") { "Australia" }
+    println(mutableMap)
+
+
 }
 
 data class People(val name_2068: String)
