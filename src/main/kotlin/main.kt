@@ -2,6 +2,8 @@ import abstraction.*
 import interfaces.*
 import protected_modifier.Chef
 import protected_modifier.Persons
+import java.util.concurrent.TimeUnit
+import kotlin.system.measureNanoTime
 
 
 const val CHEAP_PRICE = 25000
@@ -798,14 +800,14 @@ fun main(args: Array<String>) {
     println("----")
     // while loop in kotlin
     var g = 0
-    while(g < 10){
+    while (g < 10) {
         println(g)
         g++
     }
 
-    val xuv = listOf("tarush","tushar","karthik")
+    val xuv = listOf("tarush", "tushar", "karthik")
     var e = 0
-    while(e < xuv.size){
+    while (e < xuv.size) {
         println(xuv[e])
         e++
     }
@@ -836,10 +838,9 @@ fun main(args: Array<String>) {
 
     // range in kotlin.
     val q = 5
-    if(q in 1..20){
+    if (q in 1..20) {
         println("yes")
-    }
-    else{
+    } else {
         println("no")
     }
 
@@ -850,7 +851,7 @@ fun main(args: Array<String>) {
         "IND" to "India"
     )
     // prints the default value if the key is not present.
-    val resultState: String = states.getOrDefault("NEYY","welcome to new york")
+    val resultState: String = states.getOrDefault("NEYY", "welcome to new york")
     println(resultState)
 
     println("----")
@@ -869,7 +870,7 @@ fun main(args: Array<String>) {
     val numberOfEntries = states.count()
     println(numberOfEntries)
     // empty map.
-    val emptyMap = mapOf<String , Int>()
+    val emptyMap = mapOf<String, Int>()
     println(emptyMap)
     println(emptyMap.entries)
     println(emptyMap.keys)
@@ -886,7 +887,7 @@ fun main(args: Array<String>) {
     println(mutableMap)
 
     // inserting the element in the map.
-    mutableMap.put("AS","Adobe Scanner")
+    mutableMap.put("AS", "Adobe Scanner")
     println("----")
     println(mutableMap)
     println("----")
@@ -894,17 +895,17 @@ fun main(args: Array<String>) {
     mutableMap.remove("WA")
     println(mutableMap)
     println("----")
-    mutableMap.put("BT","Boston")
+    mutableMap.put("BT", "Boston")
     println(mutableMap)
     println("----")
-    mutableMap.putIfAbsent("JK","Jammu Kashmir")
+    mutableMap.putIfAbsent("JK", "Jammu Kashmir")
     println(mutableMap)
-    mutableMap.put("JK","J&K")
+    mutableMap.put("JK", "J&K")
     println(mutableMap)
     // only removes the value
     // if the key is not present.
     // otherwise not.
-    mutableMap.remove("FB","FooBar")
+    mutableMap.remove("FB", "FooBar")
     println(mutableMap)
 
     // inserts the value.
@@ -912,7 +913,69 @@ fun main(args: Array<String>) {
     mutableMap.getOrPut("AUS") { "Australia" }
     println(mutableMap)
 
+    // filter and transform
+    // maps in kotlin.
+    val newMap = mutableMapOf(
+        "NY" to "New York",
+        "SA" to "South Africa",
+        "IND" to "India",
+        "FL" to "Florida",
+        "CH" to "Chicago"
+    )
+    // filter map
+    // filter keys
+    val newBrandMap = newMap.filter { it.key.contains("A") }
+    println(newBrandMap)
+    // applied map and filter values function.
+    val nayaMap = newMap.filterValues { it.lowercase().contains("a") }
+        .map { it.value.substring(0, 3) }
+    println(nayaMap)
 
+    // map vs map key and map values.
+    val orgMap = newMap.mapKeys { it.key.length }
+    println(orgMap)
+
+    val orMap = newMap.mapValues { it.value.length }
+    println(orMap)
+
+    // remove null items from a kotlin map.
+    // mapNotNull.
+    val newRacer: List<Map.Entry<String, String>?> = newMap.mapNotNull(::findValueInWebService)
+    println(newRacer)
+
+    // generate large sequences & list
+    // generateSequence.
+    // sequence converted into list.
+
+    // kotlin performance.
+    // measure nano time and measure milliseconds.
+    lateinit var newSequence:List<Int>
+        newSequence = generateSequence(1) { it + 1 }
+            .take(500)
+            .toList()
+    measure{
+        val newSequenceResult = newSequence.filter { it % 3 == 0 }.average()
+        println("Done")
+        println(newSequenceResult)
+    }
+
+    // improving performance
+    // with kotlin sequences.
+
+
+}
+
+fun measure(block: () -> Unit) {
+    val nanoTime = measureNanoTime(block)
+    val ms = TimeUnit.NANOSECONDS.toNanos(nanoTime)
+    println("$ms ms")
+}
+fun findValueInWebService(entry: Map.Entry<String, String>): Map.Entry<String, String>? {
+    if (entry.key.startsWith("N")) {
+        return null
+    } else {
+        return entry
+    }
 }
 
 data class People(val name_2068: String)
