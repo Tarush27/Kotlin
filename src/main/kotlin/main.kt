@@ -949,27 +949,68 @@ fun main(args: Array<String>) {
 
     // kotlin performance.
     // measure nano time and measure milliseconds.
-    lateinit var newSequence:List<Int>
-        newSequence = generateSequence(1) { it + 1 }
-            .take(500)
-            .toList()
-    measure{
+    lateinit var newSequence: List<Int>
+    newSequence = generateSequence(1) { it + 1 }
+        .take(500)
+        .toList()
+    measure {
         val newSequenceResult = newSequence.filter { it % 3 == 0 }.average()
         println("Done")
         println(newSequenceResult)
     }
+    println("----")
 
     // improving performance
     // with kotlin sequences.
 
+    listOf("a", "b", "c")
+        .filter {
+            println("filter: $it")
+            true
+        }
+        .forEach {
+            println("for each: $it")
+        }
+    println("----")
+    sequenceOf("x", "y", "z")
+        .filter {
+            println("filter: $it")
+            true
+        }
+        .forEach {
+            println("for each: $it")
+        }
 
+    println("----")
+
+    measure {
+        val sequence: Sequence<Int> = generateSequence(1) { it + 1 }
+            .take(500)
+        val newSequenceResult = sequence.filter { it % 3 == 0 }.average()
+        println("Done")
+        println(newSequenceResult)
+    }
+
+    println("----")
+
+    measure {
+        val customerList = getCustomerList()
+        val customerResult = customerList.asSequence().filter { it % 2 == 0 }
+        println(customerResult)
+    }
+}
+
+fun getCustomerList(): List<Int> {
+    return generateSequence(1) { it + 1 }
+        .take(50_000_000).toList()
 }
 
 fun measure(block: () -> Unit) {
     val nanoTime = measureNanoTime(block)
-    val ms = TimeUnit.NANOSECONDS.toNanos(nanoTime)
+    val ms = TimeUnit.NANOSECONDS.toMillis(nanoTime)
     println("$ms ms")
 }
+
 fun findValueInWebService(entry: Map.Entry<String, String>): Map.Entry<String, String>? {
     if (entry.key.startsWith("N")) {
         return null
