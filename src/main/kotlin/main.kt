@@ -998,8 +998,38 @@ fun main(args: Array<String>) {
         val customerResult = customerList.asSequence().filter { it % 2 == 0 }
         println(customerResult)
     }
-}
 
+    println("----")
+    // kotlin ternary operator.
+    var carName:String? = "Kia sonet"
+    val nameLength = carName?.length ?: 0
+    println(nameLength)
+
+    println("----")
+    //kotlin double bang operator. <- non null assertion.
+    // if string is null, even then i want non null value.
+    var cycleName: String? = "asjha"
+    val cycleLength = cycleName!!.length
+    println(cycleLength)
+
+    println("----")
+    // require not null in kotlin.
+    var bikeName: String? = "askhfsif"
+    val bikeNameLength = requireNotNull(bikeName) { "the string is null!" }.length
+    println(bikeNameLength)
+
+    // kotlin check not null.
+    val newPerson: Person? = Person("donn")
+    if(checkNotNull(newPerson) { "hi its an error" }.name == "Donn"){
+        println("hi donn")
+    }
+    else{
+        println("hi")
+    }
+
+    // filter not null.
+    // already implemented.
+}
 fun getCustomerList(): List<Int> {
     return generateSequence(1) { it + 1 }
         .take(50_000_000).toList()
