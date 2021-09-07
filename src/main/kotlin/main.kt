@@ -1029,7 +1029,62 @@ fun main(args: Array<String>) {
 
     // filter not null.
     // already implemented.
+
+    // type checking
+    // with is keyword.
+    println("----")
+    val pc: Any = "lenovo"
+    if(pc is Float) {
+        println("yes")
+    }
+    else{
+        println("no")
+    }
+
+    println("----")
+    val tarush = Tarush(54656)
+    if (tarush is Any){
+        println("yes")
+    }
+    else{
+        println(tarush.javaClass.name)
+    }
+
+    println("-----")
+
+    // cast in kotlin.
+    // using as keyword.
+    val carStuff: Any = getStuff("1")
+    val newCarStuff: Int = carStuff as Int
+    println(newCarStuff)
+
+    println("----")
+    // kotlin safe cast
+    // with as?
+
+    val bikeStuff: Any = getStuff("2")
+    val newBikeStuff = bikeStuff as? String   // <- safe cast
+    println(newBikeStuff)
+
+    // kotlin generics
+    // with lists and map.
+
+    val genericList: List<String> = listOf("hi","hello","gud","should")
+
+    val genericMap: Map<Int,String> = mapOf(1 to "Tarush",2 to "tushar")
 }
+
+fun getStuff(value: String): Any{
+    return when (value){
+        "1" -> 99
+        "2" -> "Hello"
+        "3" -> true
+        "4" -> 16.1
+        else -> false
+    }
+}
+
+data class Tarush(val passportNumber: Int)
 fun getCustomerList(): List<Int> {
     return generateSequence(1) { it + 1 }
         .take(50_000_000).toList()
