@@ -1072,6 +1072,27 @@ fun main(args: Array<String>) {
     val genericList: List<String> = listOf("hi","hello","gud","should")
 
     val genericMap: Map<Int,String> = mapOf(1 to "Tarush",2 to "tushar")
+
+    println("----")
+    // generic class in kotlin.
+    val genericClass = EventList(genericList)
+    println(genericClass.items())
+
+    println("-----")
+    val newGenericClass = listOf(
+        Tarush(23165),
+        Tarush(2316),
+        Tarush(23154),
+        Tarush(2314648)
+    )
+    println(EventList(newGenericClass).items())
+
+}
+
+class EventList<T>(val list: List<T>){
+    fun items(): List<T>{
+        return list.filterIndexed { index, t -> index % 2 == 0 }
+    }
 }
 
 fun getStuff(value: String): Any{
