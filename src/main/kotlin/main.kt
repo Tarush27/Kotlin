@@ -2,6 +2,7 @@ import abstraction.*
 import interfaces.*
 import protected_modifier.Chef
 import protected_modifier.Persons
+import java.lang.IllegalArgumentException
 import java.util.concurrent.TimeUnit
 import kotlin.system.measureNanoTime
 
@@ -1001,7 +1002,7 @@ fun main(args: Array<String>) {
 
     println("----")
     // kotlin ternary operator.
-    var carName:String? = "Kia sonet"
+    var carName: String? = "Kia sonet"
     val nameLength = carName?.length ?: 0
     println(nameLength)
 
@@ -1020,10 +1021,9 @@ fun main(args: Array<String>) {
 
     // kotlin check not null.
     val newPerson: Person? = Person("donn")
-    if(checkNotNull(newPerson) { "hi its an error" }.name == "Donn"){
+    if (checkNotNull(newPerson) { "hi its an error" }.name == "Donn") {
         println("hi donn")
-    }
-    else{
+    } else {
         println("hi")
     }
 
@@ -1034,19 +1034,17 @@ fun main(args: Array<String>) {
     // with is keyword.
     println("----")
     val pc: Any = "lenovo"
-    if(pc is Float) {
+    if (pc is Float) {
         println("yes")
-    }
-    else{
+    } else {
         println("no")
     }
 
     println("----")
     val tarush = Tarush(54656)
-    if (tarush is Any){
+    if (tarush is Any) {
         println("yes")
-    }
-    else{
+    } else {
         println(tarush.javaClass.name)
     }
 
@@ -1069,9 +1067,9 @@ fun main(args: Array<String>) {
     // kotlin generics
     // with lists and map.
 
-    val genericList: List<String> = listOf("hi","hello","gud","should")
+    val genericList: List<String> = listOf("hi", "hello", "gud", "should")
 
-    val genericMap: Map<Int,String> = mapOf(1 to "Tarush",2 to "tushar")
+    val genericMap: Map<Int, String> = mapOf(1 to "Tarush", 2 to "tushar")
 
     println("----")
     // generic class in kotlin.
@@ -1087,16 +1085,55 @@ fun main(args: Array<String>) {
     )
     println(EventList(newGenericClass).items())
 
+    println("----")
+
+    // throw an exception in kotlin.
+//   ` val tarushKaistha = Tarush(27)
+//    if(tarushKaistha.passportNumber < 26){
+//        println("user is allowed")
+//    }
+//    else{
+//        throw Exception("user not allowed")
+//    }`
+
+    println("----")
+    // create custom exception.
+//    val t = Tarush(30)
+//    if (t.passportNumber < 35) {
+//        throw InvalidPassportException(t.passportNumber, "passport expired & invalid !!")
+//    }
+
+    println("----")
+
+    // try and catch in kotlin.
+    val aD = Tarush(18)
+    try {
+        checkPassportNumber(aD)
+        println("Hi")
+    }
+    catch (e: Exception) {
+        println("caught!!")
+    }
+
 }
 
-class EventList<T>(val list: List<T>){
-    fun items(): List<T>{
+private fun checkPassportNumber(aD: Tarush){
+    if(aD.passportNumber < 15){
+        throw Exception("FAILED!!")
+    }
+}
+
+class InvalidPassportException(val pNo: Int, msg: String) :
+    IllegalArgumentException("Invalid pNo: $pNo.$msg")
+
+class EventList<T>(val list: List<T>) {
+    fun items(): List<T> {
         return list.filterIndexed { index, t -> index % 2 == 0 }
     }
 }
 
-fun getStuff(value: String): Any{
-    return when (value){
+fun getStuff(value: String): Any {
+    return when (value) {
         "1" -> 99
         "2" -> "Hello"
         "3" -> true
@@ -1106,6 +1143,7 @@ fun getStuff(value: String): Any{
 }
 
 data class Tarush(val passportNumber: Int)
+
 fun getCustomerList(): List<Int> {
     return generateSequence(1) { it + 1 }
         .take(50_000_000).toList()
