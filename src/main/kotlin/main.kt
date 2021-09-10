@@ -2,8 +2,8 @@ import abstraction.*
 import interfaces.*
 import protected_modifier.Chef
 import protected_modifier.Persons
-import java.lang.IllegalArgumentException
 import java.util.concurrent.TimeUnit
+import kotlin.IllegalArgumentException
 import kotlin.system.measureNanoTime
 
 
@@ -1106,20 +1106,37 @@ fun main(args: Array<String>) {
     println("----")
 
     // try and catch in kotlin.
-    val aD = Tarush(18)
+    val aD = Tarush(14)
     try {
         checkPassportNumber(aD)
         println("Hi")
-    }
-    catch (e: Exception) {
+    } catch (e: Exception) {
         println("caught!!")
     }
 
+    println("----")
+
+    // catch multiple exceptions.
+
+    val wD = Tarush(14)
+    try {
+        checkPassportNumber(wD)
+    } catch (e: Exception) {
+        when (e) {
+            is InvalidPassportException -> println("Invalid passport")
+            is java.lang.IllegalArgumentException -> println("Illegal Argument")
+            is IndexOutOfBoundsException -> println("index not found")
+            else -> e
+        }
+        println("Boom")
+    }
+    println("khauifd")
+
 }
 
-private fun checkPassportNumber(aD: Tarush){
-    if(aD.passportNumber < 15){
-        throw Exception("FAILED!!")
+private fun checkPassportNumber(aD: Tarush) {
+    if (aD.passportNumber < 15) {
+        throw RuntimeException("jsdiu")
     }
 }
 
