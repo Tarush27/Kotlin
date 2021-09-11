@@ -2,11 +2,12 @@ import abstraction.*
 import interfaces.*
 import protected_modifier.Chef
 import protected_modifier.Persons
+import java.lang.ArithmeticException
 import java.util.concurrent.TimeUnit
 import kotlin.IllegalArgumentException
 import kotlin.system.measureNanoTime
 
-
+typealias AuthToken = String
 const val CHEAP_PRICE = 25000
 
 fun main(args: Array<String>) {
@@ -1132,14 +1133,50 @@ fun main(args: Array<String>) {
     }
     println("khauifd")
 
+    println("----")
+    // use of finally keyword with try and catch.
+    val espresso = Tarush(10)
+    try {
+        checkPassportNumber(espresso)
+        println("after validation")
+    } catch (exception: RuntimeException) {
+        println("hey this is a runtime exception.")
+    } finally {
+        println("finally")
+    }
+    println("jdigw")
+
+    // try with multiple catch
+    // order of catch block varies from most specific to general.
+    println("----")
+    try {
+        val integerArray = IntArray(5)
+        integerArray[5] = 10 / 0
+    } catch (e: java.lang.Exception) {
+        println("parent class exception")
+    } catch (e: ArithmeticException) {
+        println("runtime error")
+    } catch (e: IndexOutOfBoundsException) {
+        println("index bound error")
+    }
+    println("anyone of above")
+
+    println("----")
+
+    // type alias in kotlin.
+    val speaker = Speaker("Tushar", "HUBBUB-843JKGD")
+    println(speaker.authToken)
 }
 
-private fun checkPassportNumber(aD: Tarush) {
+fun checkPassportNumber(aD: Tarush) {
     if (aD.passportNumber < 15) {
         throw RuntimeException("jsdiu")
     }
 }
 
+data class Speaker(val userName: String, val authToken: AuthToken)
+data class Account(val authToken: AuthToken)
+data class Orders(val authToken: AuthToken)
 class InvalidPassportException(val pNo: Int, msg: String) :
     IllegalArgumentException("Invalid pNo: $pNo.$msg")
 
