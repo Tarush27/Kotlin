@@ -3,11 +3,13 @@ import interfaces.*
 import protected_modifier.Chef
 import protected_modifier.Persons
 import java.lang.ArithmeticException
+import java.lang.Math.PI
 import java.util.concurrent.TimeUnit
 import kotlin.IllegalArgumentException
 import kotlin.system.measureNanoTime
 
 typealias AuthToken = String
+
 const val CHEAP_PRICE = 25000
 
 fun main(args: Array<String>) {
@@ -1166,6 +1168,39 @@ fun main(args: Array<String>) {
     // type alias in kotlin.
     val speaker = Speaker("Tushar", "HUBBUB-843JKGD")
     println(speaker.authToken)
+
+    println("----")
+    // kotlin extension function.
+    // with user defined classes.
+    fun Circle.perimeter(): Double {
+        return 2 * PI * radius
+    }
+
+    val newCircle = Circle(2.3)
+    println(newCircle.area())
+    println(newCircle.perimeter())
+
+    // with default library classes.
+    fun Int.abs(): Int {
+        return if (this < 0) -this else this
+    }
+
+    println(4.abs())
+    println((-4).abs())
+    println("----")
+    val hsfName = "Tarush Kaistha"
+    println(hsfName.initials())
+    val tarushAge = 2
+    println(tarushAge.isAdult())
+
+
+}
+
+
+class Circle(val radius: Double) {
+    fun area(): Double {
+        return PI * radius * radius
+    }
 }
 
 fun checkPassportNumber(aD: Tarush) {
