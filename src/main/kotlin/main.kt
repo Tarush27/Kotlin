@@ -4,8 +4,10 @@ import protected_modifier.Chef
 import protected_modifier.Persons
 import java.lang.ArithmeticException
 import java.lang.Math.PI
+import java.lang.Thread.sleep
 import java.util.concurrent.TimeUnit
 import kotlin.IllegalArgumentException
+import kotlin.random.Random
 import kotlin.system.measureNanoTime
 
 typealias AuthToken = String
@@ -1193,10 +1195,54 @@ fun main(args: Array<String>) {
     val tarushAge = 2
     println(tarushAge.isAdult())
 
+    println("----")
+    // lazy evaluation in kotlin.
+    val tvName: String by lazy {
+        println("MI")
+//        sleep(3000)
+        "TCL"
+    }
+    println(tvName)
+    println(tvName)
+
+    println("----")
+
+    // use of lazy initializer block in kotlin.
+    val studentMarks = lazy {
+        expensiveOperation()
+    }
+    println(studentMarks.value)
+    println("is initialized : ${studentMarks.isInitialized()}")
+    println(studentMarks.value)
+    println(studentMarks.value)
+    println(studentMarks.value)
+
+    // use of packages
+    // importing of packages -> done.
+
+    // type inference in kotlin.
+    val videoName = "Effective Java"
+    val videoNumber = 42
+    println(videoName)
+    println(videoNumber)
+
+    // variable initialized with lateinit keyword
+    // their type is not inferred automatically
+    lateinit var collegeName: String
+
+    val reverseVideoName = videoNameReverse(videoName)
 
 }
 
+fun videoNameReverse(videoName: String): String{
+    return videoName.reversed()
+}
 
+fun expensiveOperation(): Int{
+    println("hello ji")
+    sleep(1000)
+    return Random(System.currentTimeMillis()).nextInt()
+}
 class Circle(val radius: Double) {
     fun area(): Double {
         return PI * radius * radius
