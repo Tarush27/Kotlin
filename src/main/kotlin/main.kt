@@ -1232,17 +1232,79 @@ fun main(args: Array<String>) {
 
     val reverseVideoName = videoNameReverse(videoName)
 
+    println("----")
+
+    //use of simple lambda expressions.
+    // val lambdaName: (InputType) -> ReturnType = { args: InputType -> body }
+
+    val greeter = { v: String ->
+        val modifyName = v.uppercase()
+        println("Hello $modifyName")
+    }
+    greeter("Tarush")
+
+    println("----")
+
+    // arguments can be more than one.
+    val newG: (String, String) -> String = { f: String, m: String -> "hi $f $m" }
+    println(newG("Tushar", "Kaistha"))
+
+    println("----")
+
+    // lambda fun as fun param.
+    lineLogger {
+        println("hshfoise")
+        repeat(5) { println("------") }
+    }
+
+    println("----")
+    // pass arguments to kotlin lambda function.
+    repeater(5) { index ->
+        // 3 times
+        if (index < 3) {
+            println("hi")
+        }
+        // 2 times
+        else {
+            println("gi")
+        }
+    }
+
+    derbyAnnouncer { player: String ->
+        "$player is a great player."
+    }
 }
 
-fun videoNameReverse(videoName: String): String{
+fun derbyAnnouncer(block: (String) -> String) {
+    val players = listOf(
+        "Messi",
+        "Ronaldo",
+        "Dhoni"
+    )
+    val randomPlayer = players.random()
+    println("Next player is ... $randomPlayer")
+    val announcer = block(randomPlayer)
+    println(announcer)
+}
+
+fun repeater(times: Int, block: (Int) -> Unit) {
+    repeat(times) { index -> block(index) }
+}
+
+fun lineLogger(block: () -> Unit) {
+    block()
+}
+
+fun videoNameReverse(videoName: String): String {
     return videoName.reversed()
 }
 
-fun expensiveOperation(): Int{
+fun expensiveOperation(): Int {
     println("hello ji")
     sleep(1000)
     return Random(System.currentTimeMillis()).nextInt()
 }
+
 class Circle(val radius: Double) {
     fun area(): Double {
         return PI * radius * radius
