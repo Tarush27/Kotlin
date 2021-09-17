@@ -1273,6 +1273,45 @@ fun main(args: Array<String>) {
     derbyAnnouncer { player: String ->
         "$player is a great player."
     }
+
+    // use of underscore
+    // to signify unused params.
+    loremIpsum(5) { _: Int, ipsum: String ->
+        print(ipsum)
+        print(" ")
+    }
+
+    println("----")
+
+    // use of it
+    // param in kotlin.
+
+    repeat(5) {
+        println("this is iteration $it")
+    }
+
+    println("----")
+
+    // kotlin lambdas as extensions.
+
+    val newLam: String.(Int) -> Int = { it + it }
+    val res = "Geeks".newLam(5)
+    println(res)
+}
+
+val latinWords = listOf(
+    "lorem",
+    "ipsum",
+    "doti",
+    "ohio",
+    "amen"
+)
+
+fun loremIpsum(times: Int, block: (Int, String) -> Unit) {
+    repeat(times) {
+        val newIpsum = latinWords.random()
+        block(it, newIpsum)
+    }
 }
 
 fun derbyAnnouncer(block: (String) -> String) {
