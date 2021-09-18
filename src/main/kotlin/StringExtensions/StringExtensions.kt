@@ -1,3 +1,6 @@
+@file:JvmName("StringExtensions")
+package StringExtensions
+
 fun String.initials(): String {
     val her = this.split(' ')
     val firstInitials = her[0].substring(0, 1)

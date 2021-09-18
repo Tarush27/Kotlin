@@ -1,4 +1,6 @@
 import abstraction.*
+import StringExtensions.initials
+import StringExtensions.isAdult
 import interfaces.*
 import protected_modifier.Chef
 import protected_modifier.Persons
@@ -1297,6 +1299,10 @@ fun main(args: Array<String>) {
     val newLam: String.(Int) -> Int = { it + it }
     val res = "Geeks".newLam(5)
     println(res)
+
+    println("----")
+    // call kotlin code from java.. <- done.
+    // call java code from kotlin.
 }
 
 val latinWords = listOf(
