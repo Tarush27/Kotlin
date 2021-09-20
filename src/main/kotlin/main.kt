@@ -1,14 +1,16 @@
-import abstraction.*
 import StringExtensions.initials
 import StringExtensions.isAdult
+import abstraction.*
+import classes.Employee
+import classes.JuniorDev
+import classes.Manager
+import classes.SeniorDev
 import interfaces.*
 import protected_modifier.Chef
 import protected_modifier.Persons
-import java.lang.ArithmeticException
 import java.lang.Math.PI
 import java.lang.Thread.sleep
 import java.util.concurrent.TimeUnit
-import kotlin.IllegalArgumentException
 import kotlin.random.Random
 import kotlin.system.measureNanoTime
 
@@ -1302,9 +1304,26 @@ fun main(args: Array<String>) {
 
     println("----")
     // call kotlin code from java.. <- done.
-    // call java code from kotlin.
-}
+    // call java code from kotlin. <- done.
 
+    // use of sealed classes.
+    val sealedEmployee:Employee = SeniorDev("Name",20,10)
+    val sealedMessages = when(sealedEmployee){
+        is Manager -> {
+            "Welcome ${sealedEmployee.name}! You have ${sealedEmployee.team.size} employees in your team!"
+        }
+        is SeniorDev -> {"Welcome ${sealedEmployee.name}! You have already ${sealedEmployee.projects} projects under your belt!"}
+        //is is not required for SingleTon
+        JuniorDev -> {"Welcome aboard! We wish you an awesome Experience!"}
+    }
+
+
+}
+enum class Results(val datas: String){
+    SUCCESS("success"),
+    //FAILURE(val exceptionssss: Exception)  // <- not possible in enums
+
+}
 val latinWords = listOf(
     "lorem",
     "ipsum",
