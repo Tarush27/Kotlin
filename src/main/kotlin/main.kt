@@ -15,6 +15,7 @@ import java.util.Collections.emptyList
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 import kotlin.system.measureNanoTime
+
 typealias AuthToken = String
 
 const val CHEAP_PRICE = 25000
@@ -1327,6 +1328,8 @@ fun main(args: Array<String>) {
 
     val oE = ObjectExpression()
     print(oE.helloWorld.a1())
+
+    val rocks = Rock("redsoil", 30)
 
 
 
