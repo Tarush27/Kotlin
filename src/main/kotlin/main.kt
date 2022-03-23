@@ -6,14 +6,15 @@ import classes.JuniorDev
 import classes.Manager
 import classes.SeniorDev
 import interfaces.*
+import objectexpressions.ObjectExpression
 import protected_modifier.Chef
 import protected_modifier.Persons
 import java.lang.Math.PI
 import java.lang.Thread.sleep
+import java.util.Collections.emptyList
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 import kotlin.system.measureNanoTime
-
 typealias AuthToken = String
 
 const val CHEAP_PRICE = 25000
@@ -993,13 +994,13 @@ fun main(args: Array<String>) {
 
     println("----")
 
-    measure {
-        val sequence: Sequence<Int> = generateSequence(1) { it + 1 }
-            .take(500)
-        val newSequenceResult = sequence.filter { it % 3 == 0 }.average()
-        println("Done")
-        println(newSequenceResult)
-    }
+//    measure {
+//        val sequence: Sequence = generateSequence(1) { it + 1 }
+//            .take(500)
+//        val newSequenceResult = sequence.filter { it % 3 == 0 }.average()
+//        println("Done")
+//        println(newSequenceResult)
+//    }
 
     println("----")
 
@@ -1307,23 +1308,44 @@ fun main(args: Array<String>) {
     // call java code from kotlin. <- done.
 
     // use of sealed classes.
-    val sealedEmployee:Employee = SeniorDev("Name",20,10)
-    val sealedMessages = when(sealedEmployee){
+    val sealedEmployee: Employee = SeniorDev("Name", 20, 10)
+    val sealedMessages = when (sealedEmployee) {
         is Manager -> {
             "Welcome ${sealedEmployee.name}! You have ${sealedEmployee.team.size} employees in your team!"
         }
-        is SeniorDev -> {"Welcome ${sealedEmployee.name}! You have already ${sealedEmployee.projects} projects under your belt!"}
+        is SeniorDev -> {
+            "Welcome ${sealedEmployee.name}! You have already ${sealedEmployee.projects} projects under your belt!"
+        }
         //is is not required for SingleTon
-        JuniorDev -> {"Welcome aboard! We wish you an awesome Experience!"}
+        JuniorDev -> {
+            "Welcome aboard! We wish you an awesome Experience!"
+        }
     }
+
+    val demo = Outer().Nested().foo()
+    println(demo)
+
+    val oE = ObjectExpression()
+    print(oE.helloWorld.a1())
+
 
 
 }
-enum class Results(val datas: String){
+
+class Outer {
+    private val bar: Int = 1
+
+    inner class Nested {
+        fun foo() = bar
+    }
+}
+
+enum class Results(val datas: String) {
     SUCCESS("success"),
     //FAILURE(val exceptionssss: Exception)  // <- not possible in enums
 
 }
+
 val latinWords = listOf(
     "lorem",
     "ipsum",
